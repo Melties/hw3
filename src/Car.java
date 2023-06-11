@@ -1,12 +1,11 @@
 public class Car {
     private Color color;
-    private final String model;
+    private final Model model;
     private final int yearOfIssue;
-    private int wheelSize;
-    private final int engineCapasity;
-    private Options options;
-
-    public Car(Color color, String model, int yearOfIssue, int wheelSize, int engineCapasity, Options options) {
+    private WheelSize wheelSize;
+    private final Capasity engineCapasity;
+    private String[] options = new String[]{"Go", "Stop", "Lock" };
+    public Car(Color color, Model model, int yearOfIssue, WheelSize wheelSize, Capasity engineCapasity, String[] options) {
         this.color = color;
         this.model = model;
         this.yearOfIssue = yearOfIssue;
@@ -29,14 +28,42 @@ public class Car {
         this.color = Color.valueOf(newColor);
         return this.color;
     }
-    int changeWheelSize(int newSize){
-        this.wheelSize = newSize;
+    WheelSize changeWheelSize(String newSize){
+        this.wheelSize = WheelSize.valueOf(newSize);
         return this.wheelSize;
     }
-    Options changeOptions(String newOption){
-        this.options = Options.valueOf(newOption);
+    String[] changeOption(String[] newOption){
+        this.options = newOption;
         return this.options;
     }
+
+    public Color getColor() {
+        return color;
+    }
+
+
+    public WheelSize getWheelSize() {
+        return wheelSize;
+    }
+
+    public Model getModel() {
+        return model;
+    }
+
+    public int getYearOfIssue() {
+        return yearOfIssue;
+    }
+
+    public Capasity getEngineCapasity() {
+        return engineCapasity;
+    }
+
+    public String[] getOptions() {
+        return options;
+
+    }
+}
+
 
 }
 
