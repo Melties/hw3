@@ -1,0 +1,22 @@
+public enum Capasity {
+    LOW(3000),
+    MEDIUM(4000),
+    HIGH(5000);
+    private int capasities;
+
+    Capasity(int capasities) {
+        this.capasities = capasities;
+    }
+
+    private Capasity[] capasity;
+
+    Capasity(Capasity[] capasity) {
+        this.capasity = capasity;
+    }
+
+    public int getCapasity(int capasity) {
+        this.capasity = Capasity.values();
+        return capasity;
+    }
+
+}
