@@ -5,13 +5,10 @@ public class AutoSalon {
         this.factory = factory;
     }
 
-
-    public Car sellCar(Color color, String model, int yearOfIssue, int wheelSize, int engineCapasity, Options options) {
-        color = factory.createColors(color);
-        model = String.valueOf(factory.createModels(Model.valueOf(model)));
-        wheelSize = factory.createWheelSize(wheelSize);
-        engineCapasity = factory.createEngineCapasity(engineCapasity);
-        return new Car(color, model, yearOfIssue, wheelSize, engineCapasity, options);
+    public Car sellCar(Car car){
+        car = factory.createCar(car.getColor(), car.getModel(), car.getYearOfIssue(),
+                car.getWheelSize(), car.getEngineCapasity(), car.getOptions());
+        return car;
     }
 
 }
