@@ -1,0 +1,19 @@
+public enum WheelSize {
+    SMALL(15),
+    AVERAGE(20),
+    HUGE(25);
+    private int sizes;
+
+    WheelSize(int sizes) {
+        this.sizes = sizes;
+    }
+    private WheelSize[] size;
+    WheelSize(WheelSize[] size) {
+        this.size = size;
+    }
+
+    public int getWheelSize(int size) {
+        this.size = WheelSize.values();
+        return size;
+    }
+}
