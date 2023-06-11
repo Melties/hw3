@@ -2,9 +2,9 @@ import java.util.Arrays;
 
 public class AutoFactory implements Create{
     private final Model[] models = Model.values();
-    private final int[] engineCapasities = {3000, 4000, 5000};
+    private final Capasity[] engineCapasities = Capasity.values();
     private final Color[] colors = Color.values();
-    private final int[] wheelSizes = {15, 20, 25};
+    private final WheelSize[] wheelSizes = WheelSize.values();
     public Model createModels( Model model) {
         Model result = null;
         switch (model) {
@@ -35,19 +35,25 @@ public class AutoFactory implements Create{
         }
         return result;
     }
+
+    @Override
     public int createEngineCapasity(int engineCapasity) {
-        int result = 0;
+        return 0;
+    }
+
+    public Capasity createEngineCapasity(Capasity engineCapasity) {
+        Capasity result = null;
         switch (engineCapasity) {
-            case 3000: {
-                result = 3000;
+            case LOW: {
+                result = Capasity.LOW;
                 break;
             }
-            case 4000: {
-                result = 4000;
+            case MEDIUM: {
+                result = Capasity.MEDIUM;
                 break;
             }
-            case 5000: {
-                result = 5000;
+            case HIGH: {
+                result = Capasity.HIGH;
                 break;
             }
         }
@@ -87,25 +93,30 @@ public class AutoFactory implements Create{
         }
         return result;
     }
-    public int createWheelSize(int wheelSize) {
-        int result = 0;
+
+
+    public WheelSize createWheelSize(WheelSize wheelSize) {
+        WheelSize result = null;
         switch (wheelSize) {
-            case 15: {
-                result = 15;
+            case SMALL: {
+                result = WheelSize.SMALL;
                 break;
             }
-            case 20: {
-                result = 20;
+            case AVERAGE: {
+                result = WheelSize.HUGE;
                 break;
             }
-            case 25: {
-                result = 25;
+            case HUGE: {
+                result = WheelSize.AVERAGE;
                 break;
             }
         }
         return result;
     }
-
+    @Override
+    public int createWheelSize(int wheelSize) {
+        return 0;
+    }
     @Override
     public String toString() {
         return "AutoFactory {" +
@@ -116,9 +127,17 @@ public class AutoFactory implements Create{
                 '}';
     }
 
+    public Car createCar(Color color, Model model, int yearOfIssue, WheelSize wheelSize, Capasity engineCapasity, String[] option) {
+        color = createColors(color);
+        model = createModels(model);
+        wheelSize = createWheelSize(wheelSize);
+        engineCapasity = createEngineCapasity(engineCapasity);
+        return new Car(color, model, yearOfIssue, wheelSize, engineCapasity, option);
+    }
+
     public Model[] getModels() { return models; }
-    public int[] getEngineCapasities() { return engineCapasities; }
+    public Capasity[] getEngineCapasities() { return engineCapasities; }
     public Color[] getColors() { return colors; }
-    public int[] getWheelSizes() { return wheelSizes; }
+    public WheelSize[] getWheelSizes() { return wheelSizes; }
 
 }
